@@ -3,12 +3,14 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   plugins: [react()],
+  build: {
+    outDir: 'dist'  // Ensure this is pointing to 'dist'
+  },
   server: {
     port: 5173,
     proxy: {
       '/api': {
-        // target: 'http://localhost:3001',
-        target: 'https://moneytracker-backend-fayp.onrender.com',
+        target: 'https://moneytracker-backend.onrender.com',  // Adjust this based on your backend URL
         changeOrigin: true,
       },
     },
