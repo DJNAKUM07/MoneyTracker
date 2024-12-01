@@ -1,7 +1,9 @@
 import axios from 'axios';
-import { Friend, Transaction, User } from '../types/types';
+import { Friend, Transaction } from '../types/types';
 
-const API_URL = 'http://localhost:3001/api';
+// const API_URL = 'http://localhost:3001/api';
+const API_URL = 'https://moneytracker-backend-fayp.onrender.com/api';
+
 
 const api = axios.create({
   baseURL: API_URL,
