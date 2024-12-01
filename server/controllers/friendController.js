@@ -1,4 +1,4 @@
-import Friend from '../models/Friend.js';
+import Friend from '../models/friend.js';
 
 export const getAllFriends = async (req, res) => {
   try {
