@@ -11,7 +11,7 @@ interface TransactionFormProps {
     friendId: string,
     amount: number,
     description: string,
-    type: "GAVE" | "RECEIVED",
+    type: "GAVE" | "RECEIVED" | "EXPENSE",
     date: Date
   ) => void;
   selectedFriendId: string | null;
@@ -26,7 +26,7 @@ export function TransactionForm({
     friendId: selectedFriendId || "",
     amount: "",
     description: "",
-    type: "GAVE" as "GAVE" | "RECEIVED",
+    type: "GAVE" as "GAVE" | "RECEIVED" | "EXPENSE",
     date: new Date(),
   });
 
@@ -104,8 +104,7 @@ export function TransactionForm({
         <label className="block text-sm font-medium text-gray-700 mb-1">
           Description
         </label>
-        <input
-          type="text"
+        <textarea
           value={formData.description}
           onChange={(e) =>
             setFormData({ ...formData, description: e.target.value })
@@ -126,7 +125,7 @@ export function TransactionForm({
             setFormData({ ...formData, date: date || new Date() })
           }
           className="block w-full rounded-lg border border-gray-300 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          dateFormat="dd/MM/yyyy"
+          dateFormat="dd-MM-yyyy"
           maxDate={new Date()}
           showYearDropdown
           scrollableYearDropdown
@@ -154,6 +153,16 @@ export function TransactionForm({
           />
           <div className="w-5 h-5 border-2 border-gray-300 rounded-full peer-checked:border-blue-600 peer-checked:border-8 transition-all"></div>
           <span className="font-medium text-gray-700">I received money</span>
+        </label>
+        <label className="relative flex items-center gap-2 cursor-pointer">
+          <input
+            type="radio"
+            checked={formData.type === "EXPENSE"}
+            onChange={() => setFormData({ ...formData, type: "EXPENSE" })}
+            className="sr-only peer"
+          />
+          <div className="w-5 h-5 border-2 border-gray-300 rounded-full peer-checked:border-blue-600 peer-checked:border-8 transition-all"></div>
+          <span className="font-medium text-gray-700">I spent money</span>
         </label>
       </div>
 

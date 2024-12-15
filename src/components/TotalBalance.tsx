@@ -2,14 +2,10 @@ import { Transaction } from "../types/types";
 import {
   calculateTotalOwed,
   calculateTransactionTotals,
+  calculateTotalExpenses,
 } from "../utils/calculations";
 import { formatIndianRupee } from "../utils/format";
-import {
-  DollarSign,
-  TrendingUp,
-  TrendingDown,
-  IndianRupee,
-} from "lucide-react";
+import { IndianRupee } from "lucide-react";
 
 interface TotalBalanceProps {
   transactions: Transaction[];
@@ -20,6 +16,7 @@ export function TotalBalance({ transactions }: TotalBalanceProps) {
   const { totalGiven, totalReceived } =
     calculateTransactionTotals(transactions);
   const isPositive = totalOwed > 0;
+  const totalExpenses = calculateTotalExpenses(transactions);
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
@@ -65,6 +62,13 @@ export function TotalBalance({ transactions }: TotalBalanceProps) {
           ? "Total amount you owe to friends"
           : "All settled up!"}
       </p>
+      <hr className="my-6" />
+
+      <div className="text-orange-600">
+        <div className="text-sm font-medium">
+          Total Expense : {formatIndianRupee(totalExpenses)}
+        </div>
+      </div>
     </div>
   );
 }

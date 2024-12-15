@@ -1,8 +1,7 @@
-import React from 'react';
-import { Friend, Transaction } from '../../types/types';
-import { TransactionForm } from './TransactionForm';
-import { TransactionsList } from './TransactionsList';
-import { X } from 'lucide-react';
+import { Friend, Transaction } from "../../types/types";
+import { TransactionForm } from "./TransactionForm";
+import { TransactionsList } from "./TransactionsList";
+import { X } from "lucide-react";
 
 interface TransactionsSectionProps {
   friends: Friend[];
@@ -12,7 +11,7 @@ interface TransactionsSectionProps {
     friendId: string,
     amount: number,
     description: string,
-    type: 'GAVE' | 'RECEIVED',
+    type: "GAVE" | "RECEIVED" | "EXPENSE",
     date: Date
   ) => void;
   onUpdateTransaction: (transaction: Transaction) => void;
@@ -29,12 +28,14 @@ export function TransactionsSection({
   onDeleteTransaction,
   onClearFilter,
 }: TransactionsSectionProps) {
-  const selectedFriend = friends.find(f => f.id === selectedFriendId);
+  const selectedFriend = friends.find((f) => f.id === selectedFriendId);
 
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-lg sm:text-xl font-semibold mb-4">New Transaction</h2>
+        <h2 className="text-lg sm:text-xl font-semibold mb-4">
+          New Transaction
+        </h2>
         <TransactionForm
           friends={friends}
           onAddTransaction={onAddTransaction}
@@ -45,7 +46,7 @@ export function TransactionsSection({
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg sm:text-xl font-semibold">
-            {selectedFriend 
+            {selectedFriend
               ? `Transactions with ${selectedFriend.name}`
               : "Recent Transactions"}
           </h2>

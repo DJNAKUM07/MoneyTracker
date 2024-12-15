@@ -26,7 +26,7 @@ const transactionSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['GAVE', 'RECEIVED'],
+    enum: ['GAVE', 'RECEIVED', 'EXPENSE'],
     required: true
   },
   date: {

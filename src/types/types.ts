@@ -17,7 +17,7 @@ export interface Transaction {
   amount: number;
   description: string;
   date: string;
-  type: 'GAVE' | 'RECEIVED';
+  type: 'GAVE' | 'RECEIVED' | 'EXPENSE';
 }
 
 export interface FriendBalance {

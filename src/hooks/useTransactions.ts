@@ -33,7 +33,7 @@ export function useTransactions() {
     friendId: string,
     amount: number,
     description: string,
-    type: 'GAVE' | 'RECEIVED',
+    type: 'GAVE' | 'RECEIVED' | 'EXPENSE',
     date: Date
   ) => {
     if (!user?.id) {
